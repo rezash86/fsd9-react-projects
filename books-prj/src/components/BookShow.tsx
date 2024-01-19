@@ -31,6 +31,7 @@ const BookShow = ({ book, onDelete, onEdit }: Props) => {
   }
   return (
     <div className="book-show">
+      <img alt="book" src={`http://picsum.photos/seed/${book.id}/300/200`} />
       <h3>{content}</h3>
       <div className="actions">
         <button className="edit" onClick={handleEditClick}>

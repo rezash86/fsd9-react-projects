@@ -16,6 +16,7 @@ function App() {
       { id: Math.round(Math.random() * 9999), title },
     ];
 
+    //calling setbooks is mandatory to update the state
     setBooks(updatedBooks);
   };
 
