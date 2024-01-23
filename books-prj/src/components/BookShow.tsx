@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { Book } from "./Book";
 import BookEdit from "./BookEdit";
+import useBookContext from "../hooks/use-books-context";
 
 interface Props {
   book: Book;
-  onDelete: (id: number) => void;
-  onEdit: (id: number, title: string) => void;
 }
 
-const BookShow = ({ book, onDelete, onEdit }: Props) => {
+const BookShow = ({ book }: Props) => {
   const [showEdit, setShowEdit] = useState(false);
+  const { deleteBookById } = useBookContext();
 
   const handleDeleteClick = () => {
-    onDelete(book.id);
+    deleteBookById(book.id);
   };
 
   const handleEditClick = () => {
@@ -25,9 +25,7 @@ const BookShow = ({ book, onDelete, onEdit }: Props) => {
 
   let content = <h3>{book.title}</h3>;
   if (showEdit) {
-    content = (
-      <BookEdit onSubmit={handleSubmit} onEdit={onEdit} book={book}></BookEdit>
-    );
+    content = <BookEdit onSubmit={handleSubmit} book={book}></BookEdit>;
   }
   return (
     <div className="book-show">

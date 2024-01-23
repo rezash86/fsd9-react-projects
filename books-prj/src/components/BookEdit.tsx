@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { Book } from "./Book";
+import useBookContext from "../hooks/use-books-context";
 
 interface Props {
   book: Book;
-  onEdit: (id: number, title: string) => void;
-
   onSubmit: () => void;
 }
 
-const BookEdit = ({ book, onEdit, onSubmit }: Props) => {
+const BookEdit = ({ book, onSubmit }: Props) => {
   const [title, setTitle] = useState(book.title);
+  const { editBookById } = useBookContext();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
@@ -18,7 +18,7 @@ const BookEdit = ({ book, onEdit, onSubmit }: Props) => {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
-    onEdit(book.id, title);
+    editBookById(book.id, title);
     onSubmit();
   };
 

@@ -1,24 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Book } from "./Book";
 import BookShow from "./BookShow";
+import useBookContext from "../hooks/use-books-context";
 
-interface Props {
-  books: Book[];
-  onDelete: (id: number) => void;
-  onEdit: (id: number, title: string) => void;
-}
+const BookList = () => {
+  const { books } = useBookContext();
 
-const BookList = ({ books, onDelete, onEdit }: Props) => {
   const renderedBooks = books.map((book) => {
     //we will create dynamic components for each book
     return (
       <div>
-        <BookShow
-          key={book.id}
-          book={book}
-          onDelete={onDelete}
-          onEdit={onEdit}
-        ></BookShow>
+        <BookShow key={book.id} book={book}></BookShow>
       </div>
     );
   });
