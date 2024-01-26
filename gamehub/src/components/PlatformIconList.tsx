@@ -1,4 +1,3 @@
-import React from "react";
 import { Platform } from "../hooks/useGames";
 import { IconType } from "react-icons";
 import {
@@ -7,7 +6,6 @@ import {
   FaXbox,
   FaApple,
   FaLinux,
-  FaAndroid,
 } from "react-icons/fa";
 import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendo } from "react-icons/si";
